@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <math.h>
+
+#define c pow(10, -9)
+int main(void)
+{
+	int a, b = 0;
+	scanf("%d %d", &a, &b);
+
+	printf("%.30f", (double)a / (double)b); // 여기에 .30 붙여서 맞췃음
+	return 0;
+
+}
