@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(void)
+{
+	int whatbong = 0;
+
+	scanf("%d", &whatbong);
+	baedal(whatbong);
+	return 0;
+
+}
+
+int baedal(int a)
+{
+	int sam, oh = 0;
+	switch (a % 5) {
+	case 0:
+		printf("%d", a / 5);
+		break;
+	case 1:
+		while (true)
+		{
+			if (a == 6)
+			{
+				printf("%d", 2 + oh);
+				break;
+			}
+			a = a - 5;
+			oh++;
+		}
+		break;
+	case 2:
+		if (a == 7)
+		{
+			printf("-1");
+			break;
+		}
+		while (true)
+		{
+			if (a == 12)
+			{
+				printf("%d", 4 + oh);
+				break;
+			}
+			a = a - 5;
+			oh++;
+		}
+		break;
+	case 3:
+		while (true)
+		{
+			if (a == 3)
+			{
+				printf("%d", 1 + oh);
+				break;
+			}
+			a = a - 5;
+			oh++;
+		}
+		break;
+	case 4:
+		if (a == 4)
+		{
+			printf("-1");
+			break;
+		}
+		while (true)
+		{
+			if (a == 9)
+			{
+				printf("%d", 3 + oh);
+				break;
+			}
+			a = a - 5;
+			oh++;
+		}
+		break;
+	}
+}
+
+
+----------------------------------
+----------------------------------
+
+처음에는 
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(void)
+{
+	int whatbong = 0;
+
+	scanf("%d", &whatbong);
+	baedal(whatbong);
+	return 0;
+
+}
+
+int baedal(int a)
+{
+	if (a % 5 == 0)
+	{
+		printf("%d", a / 5);
+	}
+	else if((a % 5) % 3 == 0)
+	{
+		printf("%d", (a / 5) + ((a / 5) / 3));
+	}
+	else if (a % 3 == 0)
+	{
+		printf("%d", a / 3);
+	}
+	else
+	{
+		printf("-1");
+	}
+}
+이렇게 if문을 사용하다가, 11이라는 수가 나올때 안된다는것을 알고 switch문으로 변경함.  
