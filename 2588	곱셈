@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+	int A, B = 0;
+	int F, S, T = 0;
+	scanf("%d", &A);
+	scanf("%d", &B);
+
+	F = B / 100;
+	S = (B % 100) / 10;
+	T = ((B % 100) % 10);
+
+	printf("%d\n", A*T);
+	printf("%d\n", A*S);
+	printf("%d\n", A*F);
+	printf("%d\n", A*B);
+	return 0;
+
+}
