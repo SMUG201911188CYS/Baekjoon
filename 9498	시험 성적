@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+	int a = 0;
+	scanf("%d", &a);
+	int b = a / 10;
+	if (b >= 9)
+	{
+		printf("A");
+	}
+	else if (b >= 8)
+	{
+		printf("B");
+	}
+	else if (b >= 7)
+	{
+		printf("C");
+	}
+	else if (b >= 6)
+	{
+		printf("D");
+	}
+	else
+	{
+		printf("F");
+	}
+
+	return 0;
+
+}
