@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(void)
+{
+	int num = 0;
+	int a1, a2 = 0;
+	int b, c,i = 0;
+	scanf("%d", &num);
+
+	if (num < 10)
+	{
+		num *= 10;
+	}
+
+	a1 = num / 10;
+	a2 = num % 10;
+
+	while (true)
+	{
+		c = a1 + a2;
+		a1 = a2;
+		a2 = c % 10;
+		b = a1 * 10 + a2;
+		i++;
+		if (num == b)
+		{
+			break;
+		}
+	} 
+	printf("%d", i);
+	return 0;
+}
