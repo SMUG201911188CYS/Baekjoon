@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int num = 0;
+	int len = 0;
+	int jumsu = 0;
+	int stack = 0;
+	char a[80];
+	scanf("%d", &num);
+
+	for (int i = 0; i < num; i++)
+	{
+		scanf("%s", a);
+		len = strlen(a);
+		for (int j = 0; j < len; j++)
+		{
+			if (a[j] == 'O')
+			{
+				stack++;
+				jumsu += stack;
+			}
+			else if (a[j] == 'X')
+			{
+				stack = 0;
+			}
+		}
+		printf("%d\n", jumsu);
+		jumsu = 0;
+		stack = 0; // 끝나고 스택을 초기화 해줘야하는데 안해줘서 한번 틀렷음.
+	}
+
+	return 0;
+}
