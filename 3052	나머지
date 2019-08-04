@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int b[10] = { 0, };
+	int a[10] = { 0, };
+	int na[10] = { 0, };
+	int result = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		scanf("%d", &a[i]);
+		na[i] = a[i] % 42;
+	}
+	for (int j = 0; j < 10; j++)
+	{
+		for (int k = 0; k < 10; k++)
+		{
+			if (na[j] == na[k] && na[j] != -1)
+			{
+				b[j]++;
+				if (b[j] > 1)
+				{
+					na[k] = -1;
+				}
+			}
+		}
+	}
+	for (int e = 0; e < 10; e++)
+	{
+		if (na[e] != -1)
+		{
+			result++;
+		}
+	}
+	printf("%d", result);
+	return 0;
+}
