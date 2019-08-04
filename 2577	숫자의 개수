@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char abc[100];
+	int a[3] = { 0, };
+	char asdf[10] = "0123456789";
+	int result = 0;
+	int len = 0;
+	int whatresult[10] = { 0, };
+	for (int i = 0; i < 3; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+
+	result = a[0] * a[1] * a[2];
+	sprintf(abc, "%d", result);
+	len = strlen(abc);
+
+	for (int j = 0; j < 10; j++)
+	{
+		for (int k = 0; k < len ; k++)
+		{
+			if (abc[k] == asdf[j])
+			{
+				whatresult[j]++;
+			}
+		}
+	}
+	for (int e = 0; e < 10; e++)
+	{
+		printf("%d\n", whatresult[e]);
+	}
+	return 0;
+}
