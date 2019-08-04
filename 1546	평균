@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int num = 0;
+	int dae = 0;
+	int a[1000] = { 0, };
+	scanf("%d", &num);
+	double result = 0;
+	for (int i = 0; i < num; i++)
+	{
+		scanf("%d", &a[i]);
+		if (a[i] > dae)
+		{
+			dae = a[i];
+		}
+	}
+	for (int j = 0; j < num; j++)
+	{
+		result += (double)a[j]/(double)dae*(double)100;
+	}
+	result = result / (double)num;
+	printf("%0.2f", result);
+	return 0;
+}
