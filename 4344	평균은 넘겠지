@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int whatnum = 0;
+	int whatjumsu[1000] = { 0, };
+	double avg = 0;
+	double whoup = 0;
+
+	scanf("%d", &whatnum);
+
+	for (int i = 0; i < whatnum; i++)
+	{
+		scanf("%d", &whatjumsu[0]);
+
+		for (int j = 1; j <= whatjumsu[0]; j++)
+		{
+			scanf("%d", &whatjumsu[j]);
+			avg += (double)whatjumsu[j];
+		}
+		avg = avg / (double)whatjumsu[0];
+		for (int k = 1; k <= whatjumsu[0]; k++)
+		{
+			if (avg < whatjumsu[k])
+			{
+				whoup++;
+			}
+		}
+		printf("%0.3f%%\n", whoup /(double)whatjumsu[0]*100.0);
+		avg = 0;
+		whoup = 0;
+	}
+
+	return 0;
+}
