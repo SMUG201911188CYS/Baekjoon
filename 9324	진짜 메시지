@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+int main(void)
+{
+	int whatnum = 0;
+	char whatline[100000];
+	int gil = 0;
+	char rightdap[26] ={ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
+	int whatalp = 0;
+	bool ok = false;
+	scanf("%d", &whatnum);
+	for (int i = 0; i < whatnum; i++)
+	{
+		scanf("%s", &whatline);
+		gil = strlen(whatline);
+		int rightdap1[26] = { 0, };
+		for (int j = 0; j < gil; j++)
+		{
+			whatalp = 0;
+			while (true)
+			{
+				if (rightdap[whatalp] == whatline[j])
+				{
+					rightdap1[whatalp]++;
+					if (rightdap1[whatalp] == 3)
+					{
+						if (rightdap[whatalp] == whatline[j + 1])
+						{
+							rightdap1[whatalp] = 0;
+							j++;
+						}
+						else
+						{
+							
+							ok = true;
+						}
+					}
+					break;
+				}
+				else 
+				{
+					whatalp++;
+				}
+			}
+			if (ok == true)
+			{
+				printf("FAKE\n");
+				break;
+			}
+		}
+		if (ok == false)
+		{
+			printf("OK\n");
+		}
+		ok = false;
+	}
+	return 0;
+
+}
