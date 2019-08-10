@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+
+int main(void)
+{
+	int a = 0;
+	bool b[10001] = { false, };
+	int result = 0;
+	int len = 0;
+	for (int i = 1; i <= 10000; i++)
+	{
+		a = i;
+		while (a > 0)
+		{
+			len++;
+			a /= 10;
+		}
+		result += i;
+		a = i;
+		for(int j = len-1; j >= 0 ; j--)
+		{
+			if (j == 0)
+			{
+				result += a;
+			}
+			else
+			{
+				result += a / (int)pow(10.0, (double)j);
+				a = a % (int)pow(10.0, (double)j);
+			}
+		}
+		if (result <= 10000)
+		{
+			b[result] = true;
+		}
+		if (b[i] == false)
+		{
+			printf("%d\n", i);
+		}
+		result = 0;
+		len = 0;
+	}
+	return 0;
+}
