@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int num = 0;
+	scanf("%d", &num);
+	int result = jaegui(num);
+	printf("%d", result);
+	return 0;
+}
+
+int jaegui(int i)
+{
+	if (i <= 0) // 문제의 조건이 0이상인 수를 입력받는건데, i == 1로 해놔서 시간초과로 틀림.
+	{
+		return 1;
+	}
+
+	return jaegui(i - 1) * i;
+}
