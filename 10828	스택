@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <string.h>
+
+int stack[100000] = { 0, };
+int num = 0;
+
+int main()
+{
+	int i = 0;
+	int whatnum = 0;
+	int whatrep = 0;
+	char whatord[32];
+	
+	scanf("%d", &whatrep);
+
+	for (i = 0; i < whatrep; i++)
+	{
+		scanf("%s", whatord);
+
+		if (strcmp(whatord, "push") == 0)
+		{
+			scanf("%d", &whatnum);
+			stack[num] = whatnum;
+			num++;
+		}
+		else if (strcmp(whatord, "pop") == 0)
+		{
+			if (num == 0)
+			{
+				printf("-1\n");
+			}
+			else
+			{
+				num--;
+				printf("%d\n", stack[num]);
+				stack[num] = 0;
+			}
+		}
+		else if (strcmp(whatord, "top") == 0)
+		{
+			if (num == 0)
+			{
+				printf("-1\n");
+			}
+			else 
+			{
+				printf("%d\n", stack[num - 1]);
+			}
+		}
+		else if (strcmp(whatord, "size") == 0)
+		{
+			printf("%d\n", num);
+		}
+		else if (strcmp(whatord, "empty") == 0)
+		{
+			if (num >= 1)
+			{
+				printf("0\n");
+			}
+			else
+			{
+				printf("1\n");
+			}
+		}
+	}
+
+	return 0;
+}
