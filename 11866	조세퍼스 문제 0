@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+
+int main()
+{
+	int a[1001] = { 0, };
+	int b[1001] = { 0, };
+	int n = 0;
+	int k = 0;
+	int stack = 0;
+	int sun = 0;
+	int bn = 0;
+	scanf("%d %d", &n, &k);
+
+	for (int i = 1; i <= n; i++)
+	{
+		a[i] = i;
+	}
+	
+	while (true)
+	{
+		if (bn == n) // 다빼면 탈출
+		{
+			break;
+		}
+		if (sun > n) // 순서가 초과되면  1로 초기화
+		{
+			sun = 1;
+		}
+		if (a[sun] == 0) // 만약 제거된 칸이면 패스
+		{
+			sun++;
+			continue;
+		}
+		stack++;
+
+		if (stack == k) // 3스택이 되면 빼고 초기화
+		{
+			b[bn] = a[sun];
+			a[sun] = 0;
+			bn++;
+			stack = 0;
+		}
+		sun++;
+	}
+
+	printf("<");
+	for (int k = 0; k < bn; k++)
+	{
+		if (k == bn-1)
+		{
+			printf("%d>", b[k]);
+			break;
+		}
+		printf("%d, ", b[k]);
+	}
+	return 0;
+}
