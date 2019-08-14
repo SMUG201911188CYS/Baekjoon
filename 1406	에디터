@@ -1,0 +1,160 @@
+#include <stdio.h>
+#include <string.h>
+
+char munja[600001]; // 스택1
+char munja1[600001]; // 스택2 L , D , B , P 를 해줄때 여기다가 넣어서 저장
+int main(void)
+{
+	int whatrep = 0; // 몇번 반복
+	int curser = 0; // 스택 1 top
+	int gil2 = 0; // 문자열 길이
+	int munja1top = 0; // 스택 2 top
+	char whatord; // 어떤 명령
+	char alpplus; // 어떤 단어 플러스 할건
+	scanf("%s", munja);
+	scanf("%d", &whatrep);
+	curser = strlen(munja);
+	gil2 = curser;
+	for (int i = 0; i < whatrep; i++)
+	{
+		scanf(" %c", &whatord);
+
+		if (whatord == 'L')
+		{
+			if (curser == 0)
+			{
+				continue;
+			}
+			curser--;
+			munja1[munja1top] = munja[curser];
+			munja1top++;
+		}
+		else if (whatord == 'D')
+		{
+			if (curser == gil2)
+			{
+				continue;
+			}
+			if (munja1top != 0)
+			{
+				munja1top--;
+			}
+			munja[curser] = munja1[munja1top];
+			curser++;
+		}
+		else if (whatord == 'B')
+		{
+			if (curser == 0)
+			{
+				continue;
+			}
+
+			curser--;
+			munja[curser] = munja1[munja1top];
+			gil2--;
+		}
+		else if (whatord == 'P')
+		{
+			scanf(" %c", &alpplus);
+			munja[curser] = alpplus;
+			curser++;
+			gil2++;
+		}
+	}
+
+	for (int j = 0; j < curser; j++)
+	{
+		printf("%c", munja[j]);
+	}
+	for (int k = munja1top - 1; k >= 0; k--)
+	{
+		printf("%c", munja1[k]);
+	}
+	return 0;
+
+}
+
+printf("\n"); 넣어둔걸 깜박하고 계속 출력초과 뜨길래 머지머지하다가 시간을 날림...
+그리고 문제 조건을 잘 못봐서 배열 크기 조절 실패해서 런타임 에러 몇번
+
+----------------------------------------------------
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <string.h>
+
+
+int main(void)
+{
+	int whatrep = 0;
+	int curser = 0;
+	int gil2 = 0;
+	char munja[100001];
+	char munjachange[100001];
+	char whatord;
+	char swap;
+	char alpplus[2];
+	scanf("%s", munja);
+	scanf("%d", &whatrep);
+	gil2 = strlen(munja);
+	curser = gil2;
+	for (int i = 0; i < whatrep; i++)
+	{
+		scanf(" %c", &whatord);
+
+		if (whatord == 'L')
+		{
+			if (curser == 0)
+			{
+				continue;
+			}
+			curser--;
+		}
+		else if (whatord == 'D')
+		{
+			if (curser == gil2)
+			{
+				continue;
+			}
+			curser++;
+		}
+		else if (whatord == 'B')
+		{
+			if (curser == 0)
+			{
+				continue;
+			}
+
+			for (int j = curser; j <= gil2; j++)
+			{
+				swap = munja[j];
+				munja[j - 1] = swap;
+			}
+			gil2--;
+			curser--;
+		}
+		else if (whatord == 'P')
+		{
+			scanf(" %c", alpplus);
+			strcpy(munjachange, munja);
+			munja[curser] = alpplus[0];
+			curser++;
+			for (int j = curser; j <= gil2+1; j++)
+			{
+				munja[j] = munjachange[j-1];
+			}
+			gil2++;
+		}
+	}
+
+	printf("%s", munja);
+	return 0;
+
+}
+
+처음에는 이렇게 배열 두개를 만들고 for문을 이용해서 한칸씩 밀거나 댕기는거로 햇는데 당연히 시간 초과...
