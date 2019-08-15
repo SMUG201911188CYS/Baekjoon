@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+
+int main(void)
+{
+	int num[5001] = { 0, };
+	int whatnum = 1;
+	int cnt = 0;
+	int	n = 0;
+	int k = 0;
+	int minus = 0;
+
+	scanf("%d %d", &n, &k);
+
+	for (int i = 1; i <= n; i++)
+	{
+		num[i] = i;
+	}
+
+	printf("<");
+	while (true)
+	{
+		if (minus == n)
+		{
+			break;
+		}
+		if (whatnum > n)
+		{
+			whatnum = 1;
+		}
+		if (num[whatnum] == 0)
+		{
+			whatnum++;
+			continue;
+		}
+		cnt++;
+		if (cnt == k && minus == n-1)
+		{
+			printf("%d>", num[whatnum]);
+			minus++;
+		}
+		else if (cnt == k)
+		{
+			printf("%d, ", num[whatnum]);
+			num[whatnum] = 0;
+			minus++;
+			cnt = 0;
+		}
+		whatnum++;
+		
+	}
+	return 0;
+
+}
+
+조세퍼스 문제 0과 다른점은 0으로 만들면서 출력을 한다는점. 그래서 배열 한개를 덜 만들엇고 좀더 간단하게? 만든것이다
+그리고 조세퍼스 문제 0은 메모리 제한이 512, 이문제는 256 이지만 별 상관은 없엇당...
