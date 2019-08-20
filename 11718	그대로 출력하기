@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+
+int main(void)
+{
+	char munja[105];
+
+	while (fgets(munja, sizeof(munja), stdin))
+	{
+		printf("%s", munja);
+	}
+	return 0;
+
+}
