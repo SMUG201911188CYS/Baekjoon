@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+int main(void)
+{
+	char stack[51]; // 쌓일때 저장하고 비울때 0으로 비움
+	char munja10[53];
+	int whatrep = 0;
+	int stacktop = 1;
+	bool result = true;
+	int gil2 = 0;
+	scanf("%d", &whatrep);
+
+	for (int i = 0; i < whatrep; i++)
+	{
+		scanf("%s", munja10);
+		gil2 = strlen(munja10);
+		for (int j = 0; j < gil2; j++)
+		{
+			if (munja10[j] == '(')
+			{
+				stack[stacktop] = '(';
+				stacktop++;
+			}
+			else if (munja10[j] == ')')
+			{
+				if (stack[stacktop - 1] == '(')
+				{
+					stacktop--;
+					stack[stacktop] = '0';
+				}
+				else
+				{
+					result = false;
+					break;
+				}
+			}
+		}
+		if (result == true && stacktop == 1) // 트루 이면서 1이여야지 정답.
+		{
+			printf("YES");
+		}
+		else
+		{
+			printf("NO");
+		}
+		printf("\n");
+		result = true;
+		stacktop = 1;
+		stack[1] = '\0';
+	}
+
+	return 0;
+
+}
