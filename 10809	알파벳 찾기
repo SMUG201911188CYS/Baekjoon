@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int main(void)
+{
+	char munja[105];
+	int alpnum[27] = { 0, };
+	int num = 0;
+	scanf("%s", &munja);
+	int gil2 = strlen(munja);
+	for (int i = 26; i > 0; i--)
+	{
+		alpnum[i] = -1;
+	}
+	for (int i = 0; i < gil2; i++)
+	{
+		num = munja[i];
+		if (alpnum[123 - num] == -1)
+		{
+			alpnum[123 - num] = i;
+		}
+	}
+	for (int i = 26; i > 0; i--)
+	{
+		printf("%d ", alpnum[i]);
+	}
+	return 0;
+
+}
