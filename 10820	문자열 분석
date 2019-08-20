@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int main(void)
+{
+	char munja[105];
+	int so = 0, dae = 0, num = 0, gong100 = 0;
+
+	while (fgets(munja, sizeof(munja), stdin))
+	{
+
+		for (int j = 0; munja[j] != NULL; j++)
+		{
+			if (munja[j] >= 'a' && munja[j] <= 'z')
+			{
+				so++;
+			}
+			else if (munja[j] >= 'A' && munja[j] <= 'Z')
+			{
+				dae++;
+			}
+			else if (munja[j] >= '0' && munja[j] <= '9')
+			{
+				num++;
+			}
+			else if (munja[j] == ' ')
+			{
+				gong100++;
+			}
+		}
+		printf("%d %d %d %d\n", so, dae, num, gong100);
+		so = 0, dae = 0, num = 0, gong100 = 0;
+	}
+	return 0;
+
+}
+
+eof를 구현을 못해서 몇번 틀렷
