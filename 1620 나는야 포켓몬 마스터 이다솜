@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <map>
+
+using namespace std;
+
+map<string, int> set1; // 첫번째 set1은 이름을 넣으면 숫자가 나오게
+map<int, string> set2; // 두번째는 숫자를 넣으면 이름이 나오게
+
+int main()
+{
+	int a = 0;
+	int b = 0;
+
+
+	int c = 0;
+	char a1[21];
+	char b1[21];
+
+	scanf("%d %d", &a, &b);
+
+	for (int i = 1; i <= a; i++)
+	{
+		scanf("%s", a1);
+		set1[a1] = i; // 맵함수로 이름에 해당하는 번호 부여
+		set2[i] = a1; // 맵함수로 번호에 해당하는 이름 부여
+	}
+
+	for (int k = 0; k < b; k++)
+	{
+		scanf("%s", b1);
+
+		if (isalpha(b1[0]))
+		{
+			printf("%d\n", set1[b1]);
+		}
+		else
+		{
+			printf("%s\n", set2[atoi(b1)].c_str()); // atoi -> 숫자면 숫자로 변환. / c.str_() 은 string을 char형으로 변환해주기
+		}
+	}
+}
+
+---------------------
+
+map이라는 함수를 배우게 되었다
